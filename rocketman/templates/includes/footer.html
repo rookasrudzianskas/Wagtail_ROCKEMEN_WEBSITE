@@ -1,0 +1,66 @@
+{% load static %}
+  <section class="py-4 mt-lg-5 mt-0" style='background-color: #814EBF; background-image: url("{% static 'images/contact-overlay.png' %}");'>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-8 text-lg-left text-center">
+          <h2 class="h2 cc-contact-footer-h2">
+                Global CTA title
+          </h2>
+          <p class="cc-contact-footer-p mb-0">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi asperiores consequatur corporis cum, laborum maiores officia provident recusandae. Nam, sapiente.
+          </p>
+        </div>
+        <div class="col-lg-4 text-lg-right text-center">
+        @TODO
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+<footer class="bg-dark py-4 text-light text-md-left text-center cc-footer" >
+  <div class="container">
+    <div class="row mx-lg-n3">
+      <div class="px-lg-3 col-lg-3 col-md-6 col-sm-12">
+        <div class="cc-footer-title">Links</div>
+
+              {% for i in "123" %}
+            <a class="cc-footer-link-lg d-block" href="@TODO" %}>
+            Link #{{i}}
+            </a>
+          {% endfor %}
+
+      </div>
+        <div class="px-lg-2 col-lg-3 col-md-6 col-sm-12">
+          <div class="cc-footer-title">Contact Us</div>
+            @Todo add contact
+        </div>
+        <div class="px-lg-4 col-lg-3 col-md-6 col-sm-12">
+          <div class="cc-footer-title">Hours</div>
+            @Todo hours
+        </div>
+        <div class="px-lg-3 col-lg-3 col-md-6 col-sm-12">
+
+              <a href="{{ settings.site_settings.SocialMediaSettings.facebook }}" class="cc-footer-social-icon">
+                <img src="{% static 'images/facebook.svg' %}" alt="Facebook">
+              </a>
+
+              <a href="{{ settings.site_settings.SocialMediaSettings.twitter }}" class="cc-footer-social-icon">
+                <img src="{% static 'images/twitter.svg' %}" alt="Twitter">
+              </a>
+
+              <a href="{{ settings.site_settings.SocialMediaSettings.instagram }}" class="cc-footer-social-icon">
+                <img src="{% static 'images/instagram.svg' %}" alt="Instagram">
+              </a>
+
+              <a href="{{ settings.site_settings.SocialMediaSettings.youtube }}" class="cc-footer-social-icon">
+                <img src="{% static 'images/youtube.svg' %}" alt="YouTube">
+              </a>
+
+          <div class="cc-footer-copy">&copy; {% now "Y" %} Rocketman</div>
+      </div>
+    </div>
+  </div>
+</footer>

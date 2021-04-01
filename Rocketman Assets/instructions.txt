@@ -1,0 +1,5 @@
+Copy all the files and folders except for the rocketman/ folder.
+
+Paste these into the root of your new project where your manage.py file lives.
+
+Don't forget to include the hidden files!

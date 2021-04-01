@@ -1,0 +1,4 @@
+Copy and paste the js/, css/, and images/ folders into your project static folder.
+
+For the example Rocketman website, you'd paste these folders into rocketman/static/
+For your custom website, you'd paste these folders into yourprojectname/static/
