@@ -1,5 +1,6 @@
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
+from django import forms
 
 
 class TitleBlock(blocks.StructBlock):
@@ -72,10 +73,18 @@ class CardsBlock(blocks.StructBlock):
         label = "Standard Cards"
 
 
+class RadioSelectBlock(blocks.ChoiceBlock):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.field.widget = forms.RadioSelect(
+            choices=self.field.widget.choices
+        )
+
+
 class ImageAndTextBlock(blocks.StructBlock):
     image = ImageChooserBlock(help_text="Image the automagically cropped to 786px by 552px")
-    image_alignment = blocks.ChoiceBlock(
-        choices= (
+    image_alignment = RadioSelectBlock(
+        choices=(
             ("left", "Image to the Left"),
             ("right", "Image to the Right"),
         ),
@@ -90,3 +99,13 @@ class ImageAndTextBlock(blocks.StructBlock):
         template = "streams/image_and_text_block.html"
         icon = "image"
         label = "Image & Text"
+
+
+class CallToActionBlock(blocks.StructBlock):
+    title = blocks.CharBlock(max_length=200, help_text='Max length of 200 characters')
+    link = Link()
+
+    class Meta:
+        template = "streams/call_to_action_block.html"
+        icon = "plus"
+        label = "Call to Action!"

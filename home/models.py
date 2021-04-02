@@ -7,6 +7,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 # from streams.blocks import TitleBlock
 from streams import blocks
 
+
 class HomePage(Page):
     lead_text = models.CharField(max_length=140, blank=True, help_text="Subheading text under the banner title")
     button = models.ForeignKey('wagtailcore.Page', blank=True, null=True, related_name="+",
@@ -18,6 +19,7 @@ class HomePage(Page):
         ("title", blocks.TitleBlock()),
         ("cards", blocks.CardsBlock()),
         ("image_and_text", blocks.ImageAndTextBlock()),
+        ("cta", blocks.CallToActionBlock()),
 
     ], null=True, blank=True)
 
