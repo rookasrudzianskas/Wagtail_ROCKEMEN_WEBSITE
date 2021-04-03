@@ -1,7 +1,7 @@
 from django.db import models
 from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, StreamFieldPanel
 from wagtail.core.fields import StreamField
-
+from wagtail.snippets.blocks import SnippetChooserBlock
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 # from streams.blocks import TitleBlock
@@ -20,6 +20,10 @@ class HomePage(Page):
         ("cards", blocks.CardsBlock()),
         ("image_and_text", blocks.ImageAndTextBlock()),
         ("cta", blocks.CallToActionBlock()),
+        ("testimonial", SnippetChooserBlock(
+            target_model='testimonials.Testimonial',
+            template="streams/testimonial_block.html",
+        )),
 
     ], null=True, blank=True)
 
