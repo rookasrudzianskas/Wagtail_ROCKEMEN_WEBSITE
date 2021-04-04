@@ -24,6 +24,7 @@ class HomePage(Page):
             target_model='testimonials.Testimonial',
             template="streams/testimonial_block.html",
         )),
+        ('pricing_table', blocks.PricingTableBlock()),
 
     ], null=True, blank=True)
 
