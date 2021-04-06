@@ -21,9 +21,12 @@ class FlexPage(Page):
         ('pricing_table', blocks.PricingTableBlock(
             table_options=new_table_options,
         )),
+        # ("richtext_with_title", blocks.RichTextWithTitleBlock()),
         ('richtext', wagtail_blocks.RichTextBlock(
            template="streams/simple_richtext_block.html",
+            features=["bold", "italic", "ol", "ul", "link"],
         )),
+
 
     ], null=True, blank=True)
 
