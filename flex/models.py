@@ -6,6 +6,7 @@ from wagtail.snippets.blocks import SnippetChooserBlock
 from home.models import new_table_options
 from streams import blocks
 from wagtail.core import blocks as wagtail_blocks
+from wagtail.images.blocks import ImageChooserBlock
 
 
 class FlexPage(Page):
@@ -23,10 +24,13 @@ class FlexPage(Page):
         )),
         # ("richtext_with_title", blocks.RichTextWithTitleBlock()),
         ('richtext', wagtail_blocks.RichTextBlock(
-           template="streams/simple_richtext_block.html",
+            template="streams/simple_richtext_block.html",
             features=["bold", "italic", "ol", "ul", "link"],
         )),
-
+        ("large_image", ImageChooserBlock(
+            help_text='This image will be cropped to 1200 by 775px',
+            template='streams/large_image_block.html'
+        ))
 
     ], null=True, blank=True)
 
