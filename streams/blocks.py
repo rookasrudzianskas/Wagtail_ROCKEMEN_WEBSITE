@@ -2,7 +2,8 @@ from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 from django import forms
 from wagtail.contrib.table_block.blocks import TableBlock
-
+from django.core.exceptions import ValidationError
+from django.forms.utils import ErrorList
 
 class TitleBlock(blocks.StructBlock):
     text = blocks.CharBlock(
@@ -28,8 +29,7 @@ class LinkValue(blocks.StructValue):
         return ""
 
 
-from django.core.exceptions import ValidationError
-from django.forms.utils import ErrorList
+
 
 
 class Link(blocks.StructBlock):

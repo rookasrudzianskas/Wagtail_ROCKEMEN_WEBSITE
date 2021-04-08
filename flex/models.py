@@ -10,6 +10,7 @@ from wagtail.images.blocks import ImageChooserBlock
 
 
 class FlexPage(Page):
+    parent_page_types = ["home.HomePage", "flex.FlexPage"]
     body = StreamField([
         ("title", blocks.TitleBlock()),
         ("cards", blocks.CardsBlock()),
