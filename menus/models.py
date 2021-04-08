@@ -1,7 +1,8 @@
 from django.db import models
+from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 from django_extensions.db.fields import AutoSlugField
-from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel
+from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, InlinePanel
 from wagtail.core.models import Orderable
 
 
@@ -25,6 +26,8 @@ class MenuItem(Orderable):
         FieldPanel("open_in_new_tab"),
     ]
 
+    page = ParentalKey("Menu", related_name="menu_items")
+
 
 class Menu(ClusterableModel):
     title = models.CharField(max_length=100)
@@ -33,6 +36,7 @@ class Menu(ClusterableModel):
     panels = [
         FieldPanel("title"),
         FieldPanel("slug"),
+        InlinePanel("menu_items", label="Menu Item"),
     ]
 
     def __str__(self):
