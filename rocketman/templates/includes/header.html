@@ -1,4 +1,6 @@
 {% load static %}
+{% load static menu_tags %}
+{% get_menu "header" as navigation %}
 
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
@@ -12,12 +14,15 @@
 
         <div class="collapse navbar-collapse" id="navbarMenu">
             <ul class="navbar-nav ml-auto">
-                {% for i in "123" %}
+                {% for item in navigation.menu_items.all %}
                 <li class="nav-item active">
-                    <a href="@todo" class="nav-link">Link {{i}}</a>
-                </li>
+                    <a href="{% if item.link_page %}{{ item.link_page.url }}{% elif item.link_url %}{{item.link_url}}{% else %}#{% endif %}" {% if item.open_in_new_tab %}target="_blank"{% endif %} class="nav-link">
+                        {{item.link_title}}
+                    </a>
 
-                {%endfor%}
+
+                </li>
+                {% endfor %}
             </ul>
         </div>
 
