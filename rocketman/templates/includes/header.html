@@ -16,8 +16,8 @@
             <ul class="navbar-nav ml-auto">
                 {% for item in navigation.menu_items.all %}
                 <li class="nav-item active">
-                    <a href="{% if item.link_page %}{{ item.link_page.url }}{% elif item.link_url %}{{item.link_url}}{% else %}#{% endif %}" {% if item.open_in_new_tab %}target="_blank"{% endif %} class="nav-link">
-                        {{item.link_title}}
+                    <a href="{{item.link}}" {% if item.open_in_new_tab %}target="_blank"{% endif %} class="nav-link">
+                        {{item.title}}
                     </a>
 
 
