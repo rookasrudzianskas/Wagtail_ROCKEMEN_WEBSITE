@@ -37,7 +37,7 @@ new_table_options = {
 
 class HomePage(Page):
     parent_page_types = ["wagtailcore.Page"]
-    subpage_types = ["flex.FlexPage", "services.ServiceListingPage"]
+    subpage_types = ["flex.FlexPage", "services.ServiceListingPage", "contact.ContactPage"]
     max_count = 1
     lead_text = models.CharField(max_length=140, blank=True, help_text="Subheading text under the banner title")
     button = models.ForeignKey('wagtailcore.Page', blank=True, null=True, related_name="+",
