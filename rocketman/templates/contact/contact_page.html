@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags widget_tweaks %}
 
 {% block content %}
   <div class="row">
@@ -29,11 +29,13 @@
           {% for field in form %}
             <div class="row">
                 <div class="col-sm-12">
+                  {% if field|widget_type == 'textarea' %}
                     <div class="form-group">
                       <label for="{{ field.id_for_label }}">
                         {{ field.label }}
                         {% if field.field.required %}(required){% endif %}
                       </label>
+                      {% render_field field class+="form-control" rows="6" placeholder=field.label %}
                       {% if field.errors %}
                         <small class="d-block text-danger text-small cc-font-light">
                           {% for err in field.errors %}
@@ -45,12 +47,14 @@
                         <small class="form-text text-muted cc-font-light">{{ field.help_text|safe }}</small>
                       {% endif %}
                     </div>
+                  {% else %}
                     {% if field.label != '' %}
                       <div class="form-group">
                         <label for="{{ field.id_for_label }}">
                           {{ field.label }}
                           {% if field.field.required %}(required){% endif %}
                         </label>
+                        {% render_field field class+="form-control" placeholder=field.label %}
                         {% if field.errors %}
                           <small class="d-block text-danger text-small cc-font-light">
                             {% for err in field.errors %}
@@ -63,6 +67,7 @@
                         {% endif %}
                       </div>
                     {% endif %}
+                  {% endif %}
                 </div>
             </div>
           {% endfor %}
