@@ -1,5 +1,5 @@
 from .base import *
-
+import os
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -23,6 +23,14 @@ MIDDLEWARE += [
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+cwd = os.getcwd()
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": f"{cwd}/.cache"
+    }
+}
 
 
 try:
